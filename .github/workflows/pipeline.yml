@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+      with:
+        token: ${{ github.token }}
     
     - name: Remove Temporary Clone Directory
       run: rm -rf temp_clone
@@ -24,6 +26,6 @@ jobs:
         
         # Replace 'sandbox' with your target branch name if needed
         # Use the provided PAT for authentication
-        git config user.name "fakhrihuseynov"
-        git config user.email "fexrihuseynov@gmail.com"
-        git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        # git config user.name "fakhrihuseynov"
+        # git config user.email "fexrihuseynov@gmail.com"
+        # git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
