@@ -1,4 +1,4 @@
-name: NewRepo
+name: NewRepos
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
     
     - name: Remove Temporary Clone Directory
       run: rm -rf temp_clone
@@ -23,4 +23,7 @@ jobs:
         git checkout main
         
         # Replace 'sandbox' with your target branch name if needed
-        git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        # Use the provided PAT for authentication
+        git config user.name "fakhrihuseynov"
+        git config user.email "fexrihuseynov@gmail.com"
+        git push https://YourUsername:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
