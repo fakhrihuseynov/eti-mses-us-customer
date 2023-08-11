@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.ARM-templates }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Remove Temporary Clone Directory
       run: rm -rf temp_clone
@@ -21,7 +21,7 @@ jobs:
     - name: Clone Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-        git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        git push https://fakhrihuseynov:${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         cd temp_clone
         git checkout main
         
