@@ -21,7 +21,7 @@ jobs:
     - name: Clone Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-        git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         cd temp_clone
         git checkout main
         
