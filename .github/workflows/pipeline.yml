@@ -1,0 +1,23 @@
+name: NewRepo
+
+on:
+  push:
+    branches:
+      - sandbox
+
+jobs:
+  clone_repository:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    
+    - name: Clone Repository
+      run: |
+        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
+        cd temp_clone
+        git checkout main
+        
+        # Replace 'sandbox' with your target branch name if needed
+        git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
