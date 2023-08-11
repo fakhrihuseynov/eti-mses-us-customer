@@ -11,7 +11,10 @@ jobs:
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+    
+    - name: Remove Temporary Clone Directory
+      run: rm -rf temp_clone
     
     - name: Clone Repository
       run: |
