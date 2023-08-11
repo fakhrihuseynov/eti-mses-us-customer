@@ -26,4 +26,4 @@ jobs:
         # Use the provided PAT for authentication
         git config user.name "fakhrihuseynov"
         git config user.email "fexrihuseynov@gmail.com"
-        git push https://YourUsername:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
