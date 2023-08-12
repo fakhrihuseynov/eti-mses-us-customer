@@ -10,7 +10,11 @@ jobs:
     - name: Clone repo
       env: 
         PAT: ${{ secrets.ARM_SEC }}
+        userName: fakhrihuseynov
+        email: fexrihuseynov@gmail.com
       run: | 
+        git config --global user.email $email
+        git config --global user.name $userName
         git init
         git clone https://github.com/fakhrihuseynov/etiflux.git etiflux
         git add .
