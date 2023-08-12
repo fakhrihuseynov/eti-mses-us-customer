@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.ARM_SEC }}
     
     - name: Remove Temporary Clone Directory
       run: rm -rf temp_clone
@@ -21,8 +21,11 @@ jobs:
     - name: Clone Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git
-        # git remote add origin https://github.com/fakhrihuseynov/eti-mses-us-customer.git
-        git push origin sandbox
+        cd etiflux
+        git remote add target-repo https://github.com/fakhrihuseynov/eti-mses-us-customer.git
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git push target-repo sandbox
 
         # git checkout sandbox
         # git config --global --add safe.directory /github/home
