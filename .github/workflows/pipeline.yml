@@ -31,7 +31,7 @@ jobs:
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./public
+        PUBLISH_DIR: ./temp_clone
         # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
     
     # - name: Push to Target Repository
