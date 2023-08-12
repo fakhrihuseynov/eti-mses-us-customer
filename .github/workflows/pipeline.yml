@@ -15,16 +15,33 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Add and Commit Changes
-      run: |
-        cd etiflux
-        git checkout sandbox
-        mkdir eti
-        touch eti/README.md
-        git add .
-        git commit -m "Add README"
+    - name: Remove Temporary Clone Directory
+      run: rm -rf temp_clone
     
-    - name: Push Changes
+    - name: Clone Repository
       run: |
-        cd etiflux
+        git clone https://github.com/fakhrihuseynov/etiflux.git
+        git remote add origin https://github.com/fakhrihuseynov/eti-mses-us-customer.git
         git push origin sandbox
+
+        # git checkout sandbox
+        # git config --global --add safe.directory /github/home
+        # mkdir eti
+
+    
+    # - name: Git Push Action
+    #   uses: x-actions/git-push@v1.0
+    #   env:
+    #     GITHUB_EMAIL: "fexrihuseynov@gmail.com"
+    #     GITHUB_USERNAME: "fakhrihuseynov"
+    #     PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+    #     PUBLISH_BRANCH: sandbox
+    #     PUBLISH_DIR: ./eti
+    #     # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+      
+    
+    # - name: Push to Target Repository
+    #   run: |
+    #     git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        
+    # Other steps you might want to include here...
