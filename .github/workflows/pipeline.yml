@@ -17,7 +17,7 @@ jobs:
       with:
         repository: fakhrihuseynov/etiflux
         ref: refs/heads/main
-        path: public
+        path: ./public
       
     - name: Make Save directory2
       run: | 
