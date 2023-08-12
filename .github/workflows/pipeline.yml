@@ -20,11 +20,13 @@ jobs:
         git clone https://github.com/fakhrihuseynov/etiflux.git etiflux
         git add .
         git commit -m "newComm"
-    - name: Git push
-      env: 
-        PAT: ${{ secrets.ARM_SEC }}
-      run: | 
-        git push --set-upstream $PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git sandbox
+        git push https://$userName:$PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git sandbox
+
+    # - name: Git push
+    #   env: 
+    #     PAT: ${{ secrets.ARM_SEC }}
+    #   run: | 
+    #     git push --set-upstream $PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git sandbox
 
 
 # name: CloneRepository
