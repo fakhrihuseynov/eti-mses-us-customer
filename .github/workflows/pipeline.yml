@@ -8,23 +8,17 @@ jobs:
 
     steps:
     - name: Clone repo
-      uses: actions/checkout@master
-      with:
-        repository: fakhrihuseynov/etiflux
-        ref: refs/heads/main
-        # path: ./public
-
-    - name: Push to Github
-      uses: GuillaumeFalourd/git-commit-push@v1.3
-      with:
-        access_token: ${{ secrets.ARM_SEC }}
-        email: fexrihuseynov@gmail.com
-        commit_message: your_message
-        target_branch: sandbox
-        remote_repository: https://github.com/fakhrihuseynov/eti-mses-us-customer
-        force: true
-        empty: true
-        tags: false
+      env: 
+        PAT: ${{ secrets.ARM_SEC }}
+      run: | 
+        git clone https://github.com/fakhrihuseynov/etiflux.git
+        git add .
+        git commit -m "newComm"
+    - name: Git push
+      env: 
+        PAT: ${{ secrets.ARM_SEC }}
+      run: | 
+        git push $PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git
 
 
 # name: CloneRepository
