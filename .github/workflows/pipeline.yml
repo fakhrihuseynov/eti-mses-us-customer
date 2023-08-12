@@ -20,7 +20,7 @@ jobs:
         git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
         cd temp_clone
         git remote add target-repo https://github.com/fakhrihuseynov/eti-mses-us-customer.git
-        git config user.email "fexrihuseynov@gmail.com"
-        git config user.name "Fakhri Huseynov"
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Actions"
         git checkout -b sandbox
         git push target-repo sandbox
