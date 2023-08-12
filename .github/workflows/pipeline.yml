@@ -11,7 +11,7 @@ jobs:
       env: 
         PAT: ${{ secrets.ARM_SEC }}
       run: | 
-        git clone https://github.com/fakhrihuseynov/etiflux.git
+        git clone https://github.com/fakhrihuseynov/etiflux.git etiflux
         git add .
         git commit -m "newComm"
     - name: Git push
