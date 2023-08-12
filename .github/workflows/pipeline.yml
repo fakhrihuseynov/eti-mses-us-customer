@@ -23,7 +23,7 @@ jobs:
       env: 
         PAT: ${{ secrets.ARM_SEC }}
       run: | 
-        git push $PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git
+        git push --set-upstream $PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git sandbox
 
 
 # name: CloneRepository
