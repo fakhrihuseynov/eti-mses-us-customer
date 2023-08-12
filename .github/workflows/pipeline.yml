@@ -1,4 +1,4 @@
-name: NewRepos
+name: CloneRepository
 
 on:
   push:
@@ -15,36 +15,12 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Remove Temporary Clone Directory
-      run: rm -rf temp_clone
-    
-    - name: Clone Repository
+    - name: Clone etiflux Repository
       run: |
-        git clone https://github.com/fakhrihuseynov/etiflux.git
-        cd etiflux
+        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
+        cd temp_clone
         git remote add target-repo https://github.com/fakhrihuseynov/eti-mses-us-customer.git
-        git config --global user.email "actions@github.com"
-        git config --global user.name "GitHub Actions"
+        git config user.email "fexrihuseynov@gmail.com"
+        git config user.name "Fakhri Huseynov"
+        git checkout -b sandbox
         git push target-repo sandbox
-
-        # git checkout sandbox
-        # git config --global --add safe.directory /github/home
-        # mkdir eti
-
-    
-    # - name: Git Push Action
-    #   uses: x-actions/git-push@v1.0
-    #   env:
-    #     GITHUB_EMAIL: "fexrihuseynov@gmail.com"
-    #     GITHUB_USERNAME: "fakhrihuseynov"
-    #     PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
-    #     PUBLISH_BRANCH: sandbox
-    #     PUBLISH_DIR: ./eti
-    #     # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-      
-    
-    # - name: Push to Target Repository
-    #   run: |
-    #     git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
-        
-    # Other steps you might want to include here...
