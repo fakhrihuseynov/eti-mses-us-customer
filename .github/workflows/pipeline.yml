@@ -30,7 +30,7 @@ jobs:
         GITHUB_EMAIL: "fexrihuseynov@gmail.com"
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.ARM_SEC }}@github.com/fakhri/eti-mses-us-customer.git
-        PUBLISH_BRANCH: sandbox
+        PUBLISH_BRANCH: prod
         PUBLISH_DIR: ./public
         # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
