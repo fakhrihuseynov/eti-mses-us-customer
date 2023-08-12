@@ -23,6 +23,6 @@ jobs:
         
         # Push the sandbox branch to the target repository
         git push "https://github.com/fakhrihuseynov/eti-mses-us-customer.git" sandbox
-        
+
       env:
-        TARGET_REPO_TOKEN: ${{ secrets.ARM_SEC }}
+        TARGET_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
