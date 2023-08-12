@@ -22,6 +22,8 @@ jobs:
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git
         git checkout sandbox
+        git config --global --add safe.directory /github/home
+        
         # git config --global --add safe.directory /github/workspace/temp_clone
         # cd temp_clone
     
@@ -34,6 +36,7 @@ jobs:
         PUBLISH_BRANCH: sandbox
         # PUBLISH_DIR: ./
         # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+      
     
     # - name: Push to Target Repository
     #   run: |
