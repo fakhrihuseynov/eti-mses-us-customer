@@ -7,11 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
+    - name: Clone repo
+      uses: actions/checkout@master
       with:
-        repository: fakhrihuseynov/etiflux
+        repository: fakhrihuseynov/etiflux public
         ref: refs/heads/main
 
+    - name: Push to Github
+      uses: x-actions/gh-pages@release/v1
+      env:
+        GITHUB_EMAIL: "me@xiexianbin.cn"
+        GITHUB_USERNAME: "fakhrihuseynov"
+        PUBLISH_REPO: https://${{ secrets.ARM_SEC }}@github.com/fakhri/eti-mses-us-customer.git
+        PUBLISH_BRANCH: sandbox
+        PUBLISH_DIR: ./public
+        # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
 
 # name: CloneRepository
