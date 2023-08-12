@@ -1,46 +1,71 @@
-name: CloneRepository
+name: RunTests
 
-on:
-  push:
-    branches:
-      - sandbox
+on: [push, pull_request]
 
-jobs:
-  clone_repository:
+jobs:  
+  test:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout Repository
+    - name: Clone supercharge website repository
       uses: actions/checkout@v2
-      
-    - name: Clone etiflux Repository
-      run: |
-        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-        # git checkout -b sandbox        
-        # Push the sandbox branch to the target repository
-        # git push "https://github.com/fakhrihuseynov/eti-mses-us-customer.git" sandbox
 
-    - name: git push changes
-      uses: appleboy/git-push-action@v0.0.2
+    # This part here is cloning a second repository
+    # While cloning the repository:
+    #   - it clones the repo into the given `path`
+    #   - it checks out the branch defined at `ref`
+    - name: Clone supercharge docs repository
+      uses: actions/checkout@v2
       with:
-          author_email: fexrihuseynov@gmail.com
-          author_name: GiteaBot
-          branch: sandbox
-          commit: true
-          commit_message: "[skip ci] Updated changes by gitea bot"
-          remote: git@github.com:fakhrihuseynov/eti-mses-us-customer.git
-          ssh_key: ${{ secrets.ARM_SEC }}     
+        repository: fakhrihuseynov/etiflux
+        path: resources/docs/2.x
+        # ref: 2.x
 
 
-    # - name: Pushes to public repository
-    #   id: push_directory
-    #   uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
-    #   env:
-    #       SSH_DEPLOY_KEY: ${{ secrets.ARM_SEC }}
-    #   with:
-    #       source-directory: temp_clone/
-    #       destination-github-username: 'fakhrihuseynov'
-    #       destination-repository-name: 'eti-mses-us-customer'
-    #       user-email: fexrihuseynov@gmail.com
-    #       commit-message: pushed from $GITHUB_REF
-    #       target-branch: sandbox
+
+# name: CloneRepository
+
+# on:
+#   push:
+#     branches:
+#       - sandbox
+
+# jobs:
+#   clone_repository:
+#     runs-on: ubuntu-latest
+    
+#     steps:
+#     - name: Checkout Repository
+#       uses: actions/checkout@v2
+      
+#     - name: Clone etiflux Repository
+#       run: |
+#         git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
+#         # git checkout -b sandbox        
+#         # Push the sandbox branch to the target repository
+#         # git push "https://github.com/fakhrihuseynov/eti-mses-us-customer.git" sandbox
+
+#     - name: git push changes
+#       uses: appleboy/git-push-action@v0.0.2
+#       with:
+#           author_email: fexrihuseynov@gmail.com
+#           author_name: GiteaBot
+#           branch: sandbox
+#           commit: true
+#           commit_message: "[skip ci] Updated changes by gitea bot"
+#           remote: git@github.com:fakhrihuseynov/eti-mses-us-customer.git
+#           ssh_key: ${{ secrets.ARM_SEC }}     
+
+
+#     # - name: Pushes to public repository
+#     #   id: push_directory
+#     #   uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+#     #   env:
+#     #       SSH_DEPLOY_KEY: ${{ secrets.ARM_SEC }}
+#     #   with:
+#     #       source-directory: temp_clone/
+#     #       destination-github-username: 'fakhrihuseynov'
+#     #       destination-repository-name: 'eti-mses-us-customer'
+#     #       user-email: fexrihuseynov@gmail.com
+#     #       commit-message: pushed from $GITHUB_REF
+#     #       target-branch: sandbox
