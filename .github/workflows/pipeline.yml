@@ -20,10 +20,10 @@ jobs:
     
     - name: Clone Repository
       run: |
-        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-        git config --global --add safe.directory /github/workspace/temp_clone
-        cd temp_clone
+        git clone https://github.com/fakhrihuseynov/etiflux.git
         git checkout main
+        # git config --global --add safe.directory /github/workspace/temp_clone
+        # cd temp_clone
     
     - name: Git Push Action
       uses: x-actions/git-push@v1.0
@@ -32,7 +32,7 @@ jobs:
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./temp_clone
+        PUBLISH_DIR: ./
         # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
     
     # - name: Push to Target Repository
