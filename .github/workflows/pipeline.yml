@@ -21,7 +21,7 @@ jobs:
     - name: Clone Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git
-        git checkout main
+        git checkout sandbox
         # git config --global --add safe.directory /github/workspace/temp_clone
         # cd temp_clone
     
