@@ -19,10 +19,10 @@ jobs:
         ref: refs/heads/main
         path: ./public
       
-    - name: Make Save directory2
-      run: | 
-        git config --global --add safe.directory '*'
-        git config --global --add safe.directory /github/home
+    # - name: Make Save directory2
+    #   run: | 
+    #     git config --global --add safe.directory '*'
+    #     git config --global --add safe.directory /github/home
 
     - name: Push to Github
       uses: x-actions/git-push@v1
