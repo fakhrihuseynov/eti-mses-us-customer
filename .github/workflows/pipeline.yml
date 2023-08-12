@@ -12,17 +12,17 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-    
+      
     - name: Clone etiflux Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
         cd temp_clone
         git checkout -b sandbox
         
+        # Set the PAT for authentication
+        export GITHUB_TOKEN=$PAT_TOKEN
+        
         # Push the sandbox branch to the target repository
         git push "https://github.com/fakhrihuseynov/eti-mses-us-customer.git" sandbox
-
       env:
-        TARGET_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
