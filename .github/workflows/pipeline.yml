@@ -14,9 +14,9 @@ jobs:
         ref: refs/heads/main
 
     - name: Push to Github
-      uses: x-actions/gh-pages@release/v1
+      uses: x-actions/git-push@v1
       env:
-        GITHUB_EMAIL: "me@xiexianbin.cn"
+        GITHUB_EMAIL: "fexrihuseynov@gmail.com"
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.ARM_SEC }}@github.com/fakhri/eti-mses-us-customer.git
         PUBLISH_BRANCH: sandbox
