@@ -22,7 +22,7 @@ jobs:
         git remote add target-repo https://github.com/fakhrihuseynov/eti-mses-us-customer.git
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
-        git checkout -b sandbox
+        # git checkout -b sandbox
         git push "https://$TARGET_REPO_TOKEN@github.com/fakhrihuseynov/eti-mses-us-customer.git" sandbox
       env:
         TARGET_REPO_TOKEN: ${{ secrets.ARM_SEC }}
