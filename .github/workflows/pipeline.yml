@@ -19,11 +19,15 @@ jobs:
       run: rm -rf temp_clone
     
     - name: Clone Repository
-      run: |
-        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-        git push https://fakhrihuseynov:${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
-        cd temp_clone
-        git checkout main
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.ARM-templates }}
+        run: |
+          git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
+          git push  https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+          # git push https://fakhrihuseynov:${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+          cd temp_clone
+          git checkout main
         
         # Replace 'sandbox' with your target branch name if needed
         # Use the provided PAT for authentication
