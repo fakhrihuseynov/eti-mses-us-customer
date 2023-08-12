@@ -24,3 +24,5 @@ jobs:
         git config user.name "GitHub Actions"
         git checkout -b sandbox
         git push target-repo sandbox
+      env:
+        TARGET_REPO_TOKEN: ${{ secrets.ARM_SEC }}
