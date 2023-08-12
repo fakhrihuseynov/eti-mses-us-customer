@@ -21,7 +21,7 @@ jobs:
     - name: Clone Repository
       run: |
         git clone https://github.com/fakhrihuseynov/etiflux.git
-        git remote add origin https://github.com/fakhrihuseynov/eti-mses-us-customer.git
+        # git remote add origin https://github.com/fakhrihuseynov/eti-mses-us-customer.git
         git push origin sandbox
 
         # git checkout sandbox
