@@ -7,16 +7,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Make Save directory1
+      run: | 
+        git config --global --add safe.directory '*'  
+
     - name: Clone repo
       uses: actions/checkout@master
       with:
         repository: fakhrihuseynov/etiflux
         ref: refs/heads/main
         path: public
+      
+    - name: Make Save directory2
+      run: | 
+        git config --global --add safe.directory '*'  
 
     - name: Push to Github
       uses: x-actions/git-push@v1
-      env:
+      with:
         GITHUB_EMAIL: "fexrihuseynov@gmail.com"
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.ARM_SEC }}@github.com/fakhri/eti-mses-us-customer.git
