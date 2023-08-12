@@ -23,7 +23,8 @@ jobs:
         git clone https://github.com/fakhrihuseynov/etiflux.git
         git checkout sandbox
         git config --global --add safe.directory /github/home
-        
+        mkdir eti
+
         # git config --global --add safe.directory /github/workspace/temp_clone
         # cd temp_clone
     
@@ -34,7 +35,7 @@ jobs:
         GITHUB_USERNAME: "fakhrihuseynov"
         PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         PUBLISH_BRANCH: sandbox
-        # PUBLISH_DIR: ./
+        PUBLISH_DIR: ./eti
         # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       
     
