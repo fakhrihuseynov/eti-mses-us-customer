@@ -21,7 +21,7 @@ jobs:
     - name: Clone Repository
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.ARM-templates }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
           git push  https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
