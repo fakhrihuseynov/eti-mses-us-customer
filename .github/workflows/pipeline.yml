@@ -11,7 +11,7 @@ jobs:
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
@@ -19,18 +19,13 @@ jobs:
       run: rm -rf temp_clone
     
     - name: Clone Repository
-      uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
-          git push  https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
-          # git push https://fakhrihuseynov:${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
-          cd temp_clone
-          git checkout main
+      run: |
+        git clone https://github.com/fakhrihuseynov/etiflux.git temp_clone
+        cd temp_clone
+        git checkout main
+    
+    - name: Push to Target Repository
+      run: |
+        git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         
-        # Replace 'sandbox' with your target branch name if needed
-        # Use the provided PAT for authentication
-        # git config user.name "fakhrihuseynov"
-        # git config user.email "fexrihuseynov@gmail.com"
-        # git push https://fakhrihuseynov:${{ secrets.ARM-templates }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+    # Other steps you might want to include here...
