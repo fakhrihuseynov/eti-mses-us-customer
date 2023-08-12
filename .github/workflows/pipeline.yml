@@ -13,7 +13,7 @@ jobs:
         userName: fakhrihuseynov
         email: fexrihuseynov@gmail.com
       run: | 
-        git pull origin sandbox
+        git pull
         git config --global init.defaultBranch sandbox
         git config --global user.email $email
         git config --global user.name $userName
