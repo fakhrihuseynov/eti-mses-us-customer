@@ -15,26 +15,16 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Clone Repository
-      run: |
-        git clone https://github.com/fakhrihuseynov/etiflux.git
-        git checkout sandbox
-        mkdir eti
-
-    - name: Configure Git
-      run: |
-        git config user.email "fexrihuseynov@gmail.com"
-        git config user.name "fakhrihuseynov"
-
     - name: Add and Commit Changes
       run: |
-        cd eti
-        touch README.md
+        cd etiflux
+        git checkout sandbox
+        mkdir eti
+        touch eti/README.md
         git add .
         git commit -m "Add README"
     
     - name: Push Changes
       run: |
-        cd eti
-        git remote add origin https://github.com/fakhrihuseynov/eti-mses-us-customer.git
+        cd etiflux
         git push origin sandbox
