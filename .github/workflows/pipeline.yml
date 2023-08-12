@@ -7,19 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clone supercharge website repository
-      uses: actions/checkout@v2
-
-    # This part here is cloning a second repository
-    # While cloning the repository:
-    #   - it clones the repo into the given `path`
-    #   - it checks out the branch defined at `ref`
-    - name: Clone supercharge docs repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@master
       with:
         repository: fakhrihuseynov/etiflux
-        path: resources/docs/2.x
-        # ref: 2.x
+        ref: refs/heads/release
 
 
 
