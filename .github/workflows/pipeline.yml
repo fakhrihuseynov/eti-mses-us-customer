@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.ARM-templates }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Remove Temporary Clone Directory
       run: rm -rf temp_clone
@@ -24,8 +24,18 @@ jobs:
         cd temp_clone
         git checkout main
     
-    - name: Push to Target Repository
-      run: |
-        git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+    - name: Git Push Action
+      uses: x-actions/git-push@v1.0
+      env:
+        GITHUB_EMAIL: "fexrihuseynov@gmail.com"
+        GITHUB_USERNAME: "fakhrihuseynov"
+        PUBLISH_REPO: https://${{ secrets.GITHUB_TOKEN }}@github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
+        # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+    
+    # - name: Push to Target Repository
+    #   run: |
+    #     git push https://github.com/fakhrihuseynov/eti-mses-us-customer.git HEAD:sandbox
         
     # Other steps you might want to include here...
