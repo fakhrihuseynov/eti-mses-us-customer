@@ -13,8 +13,8 @@ jobs:
         userName: fakhrihuseynov
         email: fexrihuseynov@gmail.com
       run: |
-        git config --global user.email "fexrihuseynov@gmail.com"
-        git config --global user.name "fakhrihuseynov"
+        git config --global user.email $email
+        git config --global user.name $userName
         git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
         cd alma
         git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
