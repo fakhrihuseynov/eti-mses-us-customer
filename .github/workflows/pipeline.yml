@@ -12,17 +12,15 @@ jobs:
         PAT: ${{ secrets.ARM_SEC }}
         userName: fakhrihuseynov
         email: fexrihuseynov@gmail.com
-      run: | 
-        
-        git config --global init.defaultBranch sandbox
-        git config --global user.email $email
-        git config --global user.name $userName
-        git init
-        git clone https://github.com/fakhrihuseynov/etiflux.git etiflux
-        git add .
-        git commit -m "newComm"
-        git pull origin sandbox
-        git push https://$userName:$PAT@github.com/fakhrihuseynov/eti-mses-us-customer.git sandbox
+      run: |       
+        git clone https://github.com/fakhrihuseynov/alma
+        cd alma
+        git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
+        git rm README.md
+        git commit -m "my message"
+        git fetch fruit
+        git merge fruit/main --allow-unrelated-histories
+        git push origin sandbox
 
     # - name: Git push
     #   env: 
