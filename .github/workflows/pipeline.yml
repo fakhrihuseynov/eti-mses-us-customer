@@ -13,7 +13,7 @@ jobs:
         userName: fakhrihuseynov
         email: fexrihuseynov@gmail.com
       run: |       
-        git clone https://github.com/fakhrihuseynov/alma
+        git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
         cd alma
         git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
         git rm README.md
