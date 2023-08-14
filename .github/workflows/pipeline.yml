@@ -18,7 +18,7 @@ jobs:
         git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
         cd alma
         git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
-        git rm README.md
+        # git rm README.md
         git commit -m "my message"
         git fetch fruit
         git merge fruit/main --allow-unrelated-histories
