@@ -37,8 +37,10 @@ jobs:
         cd $GITHUB_WORKSPACE/$repoName
         pwd
         ls -l
-        ${{env.templateName}}
-        ${{env.tenantName}}
+        $templateName
+        $tenantName
+        cat ${{env.templateName}}
+        cat ${{env.tenantName}}
         # find ./ -name "$templateName*" | while read f; do mv $f $(echo $f | sed 's/$templateName/$tenantName/'); done
         # find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/$templateName/$tenantName/g' {} +
         # git add .
