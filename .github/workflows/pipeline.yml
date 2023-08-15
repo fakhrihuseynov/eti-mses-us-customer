@@ -11,8 +11,8 @@ env:
   userName: fakhrihuseynov
   email: f.huseynov@etisoftware.com
   repoName: eti-onboarding
-  templateName: vero
-  tenantName: apb
+  templateName: apb
+  tenantName: novus
 
 
 jobs:  
@@ -30,18 +30,22 @@ jobs:
         git merge ${{env.repoName}}/main --allow-unrelated-histories
         git push origin sandbox
   
-    - name: Check Replace content
-      continue-on-error: true
-      run: | 
-        cd $GITHUB_WORKSPACE/${{env.repoName}}
-        pwd
-        ls -l
-        find ./ -name "${{env.templateName}}*" | while read f; do mv $f $(echo $f | sed 's/${{env.templateName}}/${{env.tenantName}}/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/${{env.templateName}}/${{env.tenantName}}/g' {} +
-        git add .
-        git commit -m "Rename files"
-        git push origin sandbox
-      
+  Check-Replace-Content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Replace content
+        continue-on-error: true
+        run: | 
+          git clone https://${{env.userName}}:${{env.PAT}}@github.com/ETI-Software-Solutions/${{env.repoName}}        
+          cd $GITHUB_WORKSPACE/${{env.repoName}}
+          pwd
+          ls -l
+          find ./ -name "${{env.templateName}}*" | while read f; do mv $f $(echo $f | sed 's/${{env.templateName}}/${{env.tenantName}}/'); done
+          find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/${{env.templateName}}/${{env.tenantName}}/g' {} +
+          git add .
+          git commit -m "Rename files"
+          git push origin sandbox
+        
 
 
 
