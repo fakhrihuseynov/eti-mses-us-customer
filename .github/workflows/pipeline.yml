@@ -3,19 +3,10 @@ name: Tenant-Onboarding-Pipeline
 on:
   workflow_dispatch:
     inputs:
-      envrionment:
+      tenantName:
         type: environment
+        required: true
         description: Select the environment
-      boolean:
-        type: boolean
-        description: True or False
-      choice:
-        type: choice
-        description: Make a choice
-        options:
-        - foo
-        - bar
-        - baz
   push:
     branches: 
       - sandbox
