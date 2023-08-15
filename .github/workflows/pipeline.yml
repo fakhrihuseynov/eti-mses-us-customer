@@ -9,7 +9,7 @@ on:
 
 
 jobs:  
-  test:
+  Template-Repo:
     runs-on: ubuntu-latest
     
     steps:
@@ -31,6 +31,7 @@ jobs:
         git push origin sandbox
 
     - name: Check and replace files repo
+      continue-on-error: true
       run: | 
         cd alma
         find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
