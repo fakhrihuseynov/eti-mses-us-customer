@@ -32,8 +32,9 @@ jobs:
 
     - name: Check existing repo
       run: | 
-        pwd
-        # cat infra/tenant/voyager/.gitignore
+        git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
+        cd alma
+        cat infra/tenant/voyager/.gitignore
 
     # - name: Git push
     #   env: 
