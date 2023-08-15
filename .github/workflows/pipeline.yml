@@ -32,7 +32,6 @@ jobs:
 
     - name: Check existing repo
       run: | 
-        git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
         cd alma
         cat infra/tenant/voyager/.gitignore
 
