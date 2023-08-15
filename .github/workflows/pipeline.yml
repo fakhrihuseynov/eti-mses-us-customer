@@ -28,16 +28,19 @@ jobs:
         git fetch $repoName
         git merge $repoName/main --allow-unrelated-histories
         git push origin sandbox
+        pwd
 
     - name: Check and replace files repo
       continue-on-error: true
       run: | 
-        cd $repoName
-        find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/voyager/armud/g' {} +
-        git add .
-        git commit -m "Rename files"
-        git push origin sandbox
+        echo $repoName
+        pwd
+        # cd $repoName
+        # find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
+        # find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/voyager/armud/g' {} +
+        # git add .
+        # git commit -m "Rename files"
+        # git push origin sandbox
 
     # - name: Git push
     #   env: 
