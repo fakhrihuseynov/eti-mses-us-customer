@@ -16,32 +16,34 @@ env:
 
 
 jobs:  
-  Template-Repo:
+  Update-Onboard-Repository:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Clone repo
+    - name: Clone Repository
       run: |
-        git config --global user.email $email
-        git config --global user.name $userName
-        git clone https://$userName:$PAT@github.com/ETI-Software-Solutions/$repoName
-        cd $repoName
-        git remote add $repoName https://$userName:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
-        git fetch $repoName
-        git merge $repoName/main --allow-unrelated-histories
+        git config --global user.email ${{env.email}}
+        git config --global user.name ${{env.userName}}
+        git clone https://${{env.userName}}:${{env.PAT}}@github.com/ETI-Software-Solutions/${{env.repoName}}
+        cd ${{env.repoName}}
+        git remote add ${{env.repoName}} https://${{env.userName}}:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
+        git fetch ${{env.repoName}}
+        git merge ${{env.repoName}}/main --allow-unrelated-histories
         git push origin sandbox
-
-    - name: Check and replace files repo
-      continue-on-error: true
-      run: | 
-        cd $GITHUB_WORKSPACE/$repoName
-        pwd
-        ls -l
-        find ./ -name "${{env.templateName}}*" | while read f; do mv $f $(echo $f | sed 's/${{env.templateName}}/${{env.tenantName}}/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/${{env.templateName}}/${{env.tenantName}}/g' {} +
-        git add .
-        git commit -m "Rename files"
-        git push origin sandbox
+  
+  Check-Replace-Content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Replace content
+        continue-on-error: true
+        run: | 
+          cd $GITHUB_WORKSPACE/${{env.repoName}}
+          pwd
+          ls -l
+          find ./ -name "${{env.templateName}}*" | while read f; do mv $f $(echo $f | sed 's/${{env.templateName}}/${{env.tenantName}}/'); done
+          find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/${{env.templateName}}/${{env.tenantName}}/g' {} +
+          git add .
+          git commit -m "Rename files"
+          git push origin sandbox
         
 
 
