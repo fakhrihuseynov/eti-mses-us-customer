@@ -16,24 +16,23 @@ jobs:
     - name: Clone repo
       env: 
         PAT: ${{ secrets.ARM_SEC }}
-
         userName: fakhrihuseynov
-        email: fexrihuseynov@gmail.com
+        email: f.huseynov@etisoftware.com
+        repoName: eti-onboarding
       run: |
         git config --global user.email $email
         git config --global user.name $userName
-        git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
-        cd alma
-        git remote add fruit https://fakhrihuseynov:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
-        git fetch fruit
-        # git commit -m "my message"
-        git merge fruit/main --allow-unrelated-histories
+        git clone https://$userName:$PAT@github.com/ETI-Software-Solutions/$repoName
+        cd $repoName
+        git remote add $repoName https://$userName:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
+        git fetch $repoName
+        git merge $repoName/main --allow-unrelated-histories
         git push origin sandbox
 
     - name: Check and replace files repo
       continue-on-error: true
       run: | 
-        cd alma
+        cd $repoName
         find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
         find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/voyager/armud/g' {} +
         git add .
