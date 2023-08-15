@@ -41,7 +41,7 @@ jobs:
         # git add .
         # git commit -m "Rename files"
         # git push origin sandbox
-        $GITHUB_PATH
+        # $GITHUB_PATH
         $GITHUB_WORKSPACE
 
 
