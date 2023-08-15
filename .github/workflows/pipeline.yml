@@ -6,6 +6,9 @@ on:
       tenantName:
         required: true
         type: string
+      templateName:
+        required: true
+        type: string
       repoName:
         required: true
         type: string
@@ -18,7 +21,7 @@ env:
   userName: fakhrihuseynov
   email: f.huseynov@etisoftware.com
   repoName: ${{inputs.repoName}}
-  templateName: apb
+  templateName: ${{inputs.templateName}}
   tenantName: ${{inputs.tenantName}}
 
 
