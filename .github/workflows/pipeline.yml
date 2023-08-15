@@ -6,6 +6,9 @@ on:
       tenantName:
         required: true
         type: string
+      repoName:
+        required: true
+        type: string
   # push:
   #   branches: 
   #     - sandbox
@@ -14,9 +17,9 @@ env:
   PAT: ${{ secrets.ARM_SEC }}
   userName: fakhrihuseynov
   email: f.huseynov@etisoftware.com
-  repoName: eti-onboarding
+  repoName: ${{inputs.repoName}}
   templateName: apb
-  tenantName: novus
+  tenantName: ${{inputs.tenantName}}
 
 
 jobs:  
