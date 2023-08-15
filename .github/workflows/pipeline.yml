@@ -24,7 +24,7 @@ jobs:
         git config --global user.name $userName
         git clone https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/alma
         cd alma
-        git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
+        git remote add fruit https://fakhrihuseynov:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
         git fetch fruit
         # git commit -m "my message"
         git merge fruit/main --allow-unrelated-histories
