@@ -30,10 +30,14 @@ jobs:
         git merge fruit/main --allow-unrelated-histories
         git push origin sandbox
 
-    - name: Check existing repo
+    - name: Check and replace files repo
       run: | 
         cd alma
-        cat infra/tenant/voyager/.gitignore
+        find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
+        find . -type f \( -name "*.yml" -o -name "*.yaml" \) -exec perl -i -p -e 's/armud/alma/g' {} +
+        git add .
+        git commit -m "Rename files"
+        git push origin sandbox
 
     # - name: Git push
     #   env: 
