@@ -7,6 +7,7 @@ on:
       - sandbox
       - prod
 env:
+  PAT: ${{ secrets.ARM_SEC }}
   userName: fakhrihuseynov
   email: f.huseynov@etisoftware.com
   repoName: eti-onboarding
@@ -18,11 +19,11 @@ jobs:
     
     steps:
     - name: Clone repo
-      env: 
-        PAT: ${{ secrets.ARM_SEC }}
-        userName: fakhrihuseynov
-        email: f.huseynov@etisoftware.com
-        repoName: eti-onboarding
+      # env: 
+      #   PAT: ${{ secrets.ARM_SEC }}
+      #   userName: fakhrihuseynov
+      #   email: f.huseynov@etisoftware.com
+      #   repoName: eti-onboarding
       run: |
         git config --global user.email $email
         git config --global user.name $userName
@@ -38,8 +39,8 @@ jobs:
       continue-on-error: true
       run: | 
         cd /home/runner/work/eti-mses-us-customer/eti-mses-us-customer/$repoName
-        find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/voyager/armud/g' {} +
+        find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/armud/vero/'); done
+        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/armud/vero/g' {} +
         git add .
         git commit -m "Rename files"
         git push origin sandbox
