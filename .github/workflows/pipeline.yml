@@ -34,7 +34,7 @@ jobs:
       run: | 
         cd alma
         find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" \) -exec perl -i -p -e 's/armud/alma/g' {} +
+        find . -type f \( -name "*.yml" -o -name "*.yaml" \) -exec perl -i -p -e 's/voyager/armud/g' {} +
         git add .
         git commit -m "Rename files"
         git push origin sandbox
