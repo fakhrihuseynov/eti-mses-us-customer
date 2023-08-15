@@ -32,7 +32,7 @@ jobs:
 
     - name: Check existing repo
       run: | 
-        ls infra/tenant/voyager
+        pwd
         cat infra/tenant/voyager/.gitignore
 
     # - name: Git push
