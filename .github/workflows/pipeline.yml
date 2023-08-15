@@ -30,6 +30,11 @@ jobs:
         git merge fruit/main --allow-unrelated-histories
         git push origin sandbox
 
+    - name: Check existing repo
+      run: | 
+        ls infra/tenant/voyager
+        cat infra/tenant/voyager/.gitignore
+
     # - name: Git push
     #   env: 
     #     PAT: ${{ secrets.ARM_SEC }}
