@@ -3,13 +3,13 @@ name: Tenant-Onboarding-Pipeline
 on:
   workflow_dispatch:   
     inputs:
-      tenantName:
+      repoName:
         required: true
         type: string
       templateName:
-        required: true
-        type: string
-      repoName:
+          required: true
+          type: string
+      tenantName:
         required: true
         type: string
   # push:
