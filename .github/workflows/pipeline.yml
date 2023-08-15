@@ -35,11 +35,13 @@ jobs:
       continue-on-error: true
       run: | 
         cd $GITHUB_WORKSPACE/$repoName
-        find ./ -name "$templateName*" | while read f; do mv $f $(echo $f | sed 's/$templateName/$tenantName/'); done
-        find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/$templateName/$tenantName/g' {} +
-        git add .
-        git commit -m "Rename files"
-        git push origin sandbox
+        pwd
+        ls -l
+        # find ./ -name "$templateName*" | while read f; do mv $f $(echo $f | sed 's/$templateName/$tenantName/'); done
+        # find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/$templateName/$tenantName/g' {} +
+        # git add .
+        # git commit -m "Rename files"
+        # git push origin sandbox
         
 
 
