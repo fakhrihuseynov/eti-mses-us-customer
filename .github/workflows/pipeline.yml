@@ -16,7 +16,7 @@ jobs:
     - name: Clone repo
       env: 
         PAT: ${{ secrets.ARM_SEC }}
-        
+
         userName: fakhrihuseynov
         email: fexrihuseynov@gmail.com
       run: |
@@ -26,7 +26,7 @@ jobs:
         cd alma
         git remote add fruit https://fakhrihuseynov:$PAT@github.com/fakhrihuseynov/armud
         git fetch fruit
-        git commit -m "my message"
+        # git commit -m "my message"
         git merge fruit/main --allow-unrelated-histories
         git push origin sandbox
 
