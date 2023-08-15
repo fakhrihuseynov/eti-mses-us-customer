@@ -37,9 +37,9 @@ jobs:
     - name: Check and replace files repo
       continue-on-error: true
       run: | 
-        ls eti-mses-us-customer/eti-mses-us-customer/
-        $repoName
         pwd
+        ls -l
+        $repoName
         # cd $repoName
         # find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
         # find . -type f \( -name "*.yml" -o -name "*.yaml" -o -name "*.gitignore" -o -name "*.properties"  \) -exec perl -i -p -e 's/voyager/armud/g' {} +
