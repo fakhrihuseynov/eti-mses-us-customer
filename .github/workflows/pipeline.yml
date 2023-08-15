@@ -33,7 +33,7 @@ jobs:
     - name: Check and replace files repo
       continue-on-error: true
       run: | 
-        echo $repoName
+        $repoName
         pwd
         # cd $repoName
         # find ./ -name "voyager*" | while read f; do mv $f $(echo $f | sed 's/voyager/armud/'); done
