@@ -37,7 +37,7 @@ jobs:
     - name: Check and replace files repo
       continue-on-error: true
       run: | 
-        ls eti-mses-us-customer/eti-mses-us-customer/$repoName
+        ls eti-mses-us-customer/eti-mses-us-customer/
         $repoName
         pwd
         # cd $repoName
