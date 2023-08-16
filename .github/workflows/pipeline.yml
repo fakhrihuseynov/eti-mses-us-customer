@@ -13,10 +13,7 @@ on:
       tenantName:
         required: true
         type: string
-  # push:
-  #   branches: 
-  #     - sandbox
-  #     - prod
+
 env:
   PAT: ${{ secrets.ARM_SEC }}
   userName: fakhrihuseynov
