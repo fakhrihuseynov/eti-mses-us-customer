@@ -9,6 +9,7 @@ on:
       templateName:
           required: true
           type: string
+          default: voyager
       tenantName:
         required: true
         type: string
