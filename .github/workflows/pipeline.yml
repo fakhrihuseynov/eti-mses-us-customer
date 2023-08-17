@@ -3,6 +3,9 @@ name: Tenant-Onboarding-Pipeline
 on:
   workflow_dispatch:   
     inputs:
+      ownerName:
+        required: true
+        type: string
       repoName:
         required: true
         type: string
@@ -21,6 +24,7 @@ env:
   repoName: ${{inputs.repoName}}
   templateName: ${{inputs.templateName}}
   tenantName: ${{inputs.tenantName}}
+  ownerName: ${{inputs.ownerName}}
 
 
 jobs:  
@@ -31,7 +35,7 @@ jobs:
       run: |
         git config --global user.email ${{env.email}}
         git config --global user.name ${{env.userName}}
-        git clone https://${{env.userName}}:${{env.PAT}}@github.com/ETI-Software-Solutions/${{env.repoName}}
+        git clone https://${{env.userName}}:${{env.PAT}}@github.com/${{env.ownerName}}/${{env.repoName}}
         cd ${{env.repoName}}
         git remote add ${{env.repoName}} https://${{env.userName}}:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
         git fetch ${{env.repoName}}
