@@ -1,7 +1,7 @@
 name: Tenant-Onboarding-Pipeline
 
 on:
-  workflow_dispatch:   
+  workflow_dispatch:
     inputs:
       repoName:
         required: true
