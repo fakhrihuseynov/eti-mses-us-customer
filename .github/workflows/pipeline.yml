@@ -16,6 +16,9 @@ on:
       tenantName:
         required: true
         type: string
+      kofeName:
+          required: true
+          type: string
 
 env:
   PAT: ${{ secrets.ARM_SEC }}
