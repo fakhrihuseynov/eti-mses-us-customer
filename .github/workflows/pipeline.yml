@@ -40,6 +40,11 @@ jobs:
         git remote add ${{env.repoName}} https://${{env.userName}}:$PAT@github.com/ETI-Software-Solutions/eti-gitops-templates.git
         git fetch ${{env.repoName}}
         git merge ${{env.repoName}}/main --allow-unrelated-histories
+        rm -rf mses/
+        mv infra/tenant/${{env.templateName}}/* .
+        mv infra/tenant/${{env.templateName}}/.gitignore .
+        git add .
+        git commit -m "Restructure folder"
         git push origin sandbox
   
     - name: Check Replace content
